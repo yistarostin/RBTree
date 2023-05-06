@@ -2,3 +2,5 @@
 *.pdf
 *in*.txt
 tests
+debug
+optimized
