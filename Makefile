@@ -11,4 +11,4 @@ clean:
 	rm optimized
 	rm debug
 	rm a.out
-	rm -r tests
+	rm tests/*
