@@ -3,12 +3,12 @@ constexpr bool BLACK = false;
 constexpr bool RED = true;
 using namespace std;
 
-// TODO: use template type instead of int
+template <typename Value>
 struct RBTree {
     struct Node {
         Node *left, *right;
         Node *parent;
-        int value;
+        Value value;
         bool color;  // TODO: in case of unsigned integer values and signed type for values, use sign bit for color
                      // (wins 1 bit!!!)
 
@@ -39,7 +39,7 @@ struct RBTree {
         // root = new Node{.left = nullptr, .right = nullptr, .parent = nullptr, .value = 0, .color = BLACK};
     }
 
-    void Insert(int value) {
+    void Insert(const Value &value) {
         Insert_(root, value, nullptr);
     }
 
@@ -49,7 +49,7 @@ struct RBTree {
         return node->color;
     }
 
-    void Insert_(Node *&node, int value, Node *from) {
+    void Insert_(Node *&node, const Value &value, Node *from) {
         if (node) {
             if (value == node->value)
                 return;
@@ -155,11 +155,11 @@ struct RBTree {
         TraverseSubtree(node->right, functor);
     }
 
-    bool Lookup(const int &value) const {
+    bool Lookup(const Value &value) const {
         return Lookup_(root, value);
     }
 
-    bool Lookup_(Node *node, int value) const {
+    bool Lookup_(Node *node, const Value &value) const {
         if (!node)
             return false;
         if (value == node->value)
@@ -177,7 +177,7 @@ int main() {
 #ifdef DEBUG
     cout << "DEBUG\n---------------------\n";
 #endif  // !DEBUG
-    RBTree rbtree;
+    RBTree<int> rbtree;
     int q;
     cin >> q;
     while (q--) {
