@@ -184,7 +184,9 @@ int main() {
         int x;
         cin >> x;
         rbtree.Insert(x);
+#ifdef DEBUG
         rbtree.Traverse(Printer);
+#endif  // !DEBUG
         cout << endl;
         cout.flush();
     }
