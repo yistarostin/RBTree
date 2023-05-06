@@ -67,7 +67,7 @@ struct RBTree {
     void FixInsert_(Node *node) {
         while (node->parent and node->parent->color == RED) {
             if (node->parent == node->parent->parent->left) {  // BUG: node->parent->parent may cause segfault
-                Node *uncle = node->parent->parent->right;     // NOTE: uncle is called 'y' in Korman book
+                Node *uncle = node->parent->parent->right;     // NOTE: uncle is called 'y' in Cormen
                 if (GetColor(uncle) == RED) {
                     node->parent->color = BLACK;
                     uncle->color = BLACK;
@@ -85,7 +85,7 @@ struct RBTree {
 
             } else {
                 // TODO: same as then clause with “right” and “left” exchanged
-                Node *uncle = node->parent->parent->left;  // NOTE: uncle is called 'y' in Korman book
+                Node *uncle = node->parent->parent->left;  // NOTE: uncle is called 'y' in Cormen
                 if (GetColor(uncle) == RED) {
                     node->parent->color = BLACK;
                     uncle->color = BLACK;
@@ -105,7 +105,7 @@ struct RBTree {
         root->color = BLACK;
     }
 
-    void LeftRotate(Node *node) {  // NOTE: node is called 'x' in Korman
+    void LeftRotate(Node *node) {  // NOTE: node is called 'x' in Cormen
         Node *y = node->right;
         node->right = y->left;
         if (y->left) {
@@ -122,7 +122,7 @@ struct RBTree {
         node->parent = y;
     }
 
-    void RightRotate(Node *node) {  // NOTE: node is called 'y' in Korman
+    void RightRotate(Node *node) {  // NOTE: node is called 'y' in Cormen
         Node *x = node->left;
         node->left = x->right;
         if (x->right) {
@@ -190,5 +190,7 @@ int main() {
         cout << endl;
         cout.flush();
     }
+    rbtree.Traverse(Printer);
+    cout << endl;
     return 0;
 }
