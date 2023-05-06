@@ -66,12 +66,12 @@ struct RBTree {
 
     void FixInsert_(Node *node) {
         while (node->parent and node->parent->color == RED) {
-            if (node->parent == node->parent->parent->left) {  // BUG: node->parent->parent may cause segfault
-                Node *uncle = node->parent->parent->right;     // NOTE: uncle is called 'y' in Cormen
+            if (node->parent == node->parent->parent->left) {
+                Node *uncle = node->parent->parent->right;  // NOTE: uncle is called 'y' in Cormen
                 if (GetColor(uncle) == RED) {
                     node->parent->color = BLACK;
                     uncle->color = BLACK;
-                    node->parent->parent->color = RED;  // BUG: same here
+                    node->parent->parent->color = RED;
                     node = node->parent->parent;
                 } else {
                     if (node == node->parent->right) {
@@ -89,7 +89,7 @@ struct RBTree {
                 if (GetColor(uncle) == RED) {
                     node->parent->color = BLACK;
                     uncle->color = BLACK;
-                    node->parent->parent->color = RED;  // BUG: same here
+                    node->parent->parent->color = RED;
                     node = node->parent->parent;
                 } else {
                     if (node == node->parent->left) {
