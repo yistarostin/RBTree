@@ -6,3 +6,9 @@ optimized:
 	g++ -O3 rbtree.cpp -o optimized
 genstress:
 	python ./gen_stress.py > tests/stress.txt
+clean:
+	rm *.pdf
+	rm optimized
+	rm debug
+	rm a.out
+	rm -r tests
