@@ -6,7 +6,7 @@ optimized:
 	g++ -O3 rbtree.cpp -o optimized
 genstress:
 	python ./gen_stress.py > tests/stress.txt
-clean:
+clean: #TODO: check that files being removed actually exist
 	rm *.pdf
 	rm optimized
 	rm debug
